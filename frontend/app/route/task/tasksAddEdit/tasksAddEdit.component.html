@@ -1,0 +1,22 @@
+<div bsModal #childModal="bs-modal" class="modal fade">
+	<div class="modal__inner">
+		<form class="modal__form" #fm="ngForm" novalidate>
+			<h2 class="modal-title">{{titleModal}}</h2>
+			<label>Task title</label>
+			<input type="text" class="modal__title" name="taskName" #taskName="ngModel" [(ngModel)]="task.taskName" placeholder="Task Name&hellip;" required>
+
+			<label>Task title</label>
+			<input type="text" class="modal__title" name="taskDesc" #taskDesc="ngModel" [(ngModel)]="task.taskDescription" placeholder="Task Description&hellip;" required>
+
+			<label>Minutes</label>
+			<input type="number" class="modal__minutes" name="taskMinutes" #taskMinutes="ngModel" [(ngModel)]="task.minutes" placeholder="Task Minutes&hellip;" required>
+
+			<label>Seconds</label>
+			<input type="number" class="seconds" name="taskSeconds" #taskSeconds="ngModel" [(ngModel)]="task.seconds" placeholder="Task Seconds&hellip;" required>
+			
+			<button class="button modal__save" (click)="saveTask(fm,task)">Save</button>
+			<button class="button modal__cancel" (click)="closeModal()">Cancel </button>
+		</form>
+		<button class="button modal__close" (click)="closeModal()"></button>
+	</div>
+</div>

@@ -1,0 +1,71 @@
+<div class="app app--main">
+	<div class="timer-area">
+		<div class="timer-wrapper" [ngClass]="{'timer-wrapper--running': isRunning}">
+			<div class="timer">
+				<span class="minutes">{{task.minutes | number:'2.0-5'}}</span>:<span class="seconds">{{task.seconds | number:'2.0-5'}}</span>
+			</div>
+		</div>
+		<div class="controls">
+			<button type="submit" class="button start" (click)="startTask(frm)">Start</button>
+			<button class="button stop" [disabled]="!isRunning" (click)="stopTask()">Pause</button>
+			<button class="button finish" [disabled]="!isRunning" (click)="saveTask()">Finish</button>
+			<button class="button cancel"  (click)="cancelTask()">Cancel</button>
+			
+			<form #frm="ngForm" class="task-form" [ngClass]="{'task-form--show': showForm}" novalidate>
+				<input type="text" class="task-label" #taskName="ngModel" [(ngModel)]="task.taskName" name="taskName" [ngClass]="{'error': taskName.invalid}" placeholder="Task name&hellip;" required>
+				<p class="error" *ngIf="taskName.invalid">Please Enter Task Name</p>
+				
+				<input type="text" class="task-label" #desc="ngModel" [(ngModel)]="task.taskDescription" name="desc" [ngClass]="{'error': desc.invalid}" placeholder="Task Description&hellip;" required>				
+				<p class="error" *ngIf="desc.invalid">Please Enter Task Description</p>
+			</form>
+		</div>
+	</div>
+
+	<div class="task-area">
+		<div class="card">
+			<div class="card-header">Search Task
+				<button class="add-task" (click)="openAddEditModal({taskId: 0})"></button>
+			</div>
+
+			<div class="card-body">
+				<input type="text" class="task-label" name="taskTitle" placeholder="Task name&hellip;" #taskTitle="ngModel" [(ngModel)]="taskFilter.taskName">
+				<input type="text" class="task-label" name="taskDesc" placeholder="Task Description&hellip;" #taskDesc="ngModel" [(ngModel)]="taskFilter.taskDescription">
+			</div>
+		</div>
+		
+		<div class="card">
+			<div class="card-header">Completed Tasks
+				<button class="sort-{{sortOrder}}" (click)="sort('taskName')"></button>
+				<!-- <button class="sort-desc"></button> -->
+			</div>
+			
+			<div class="card-body">
+				<ul class="time-list">
+					<li *ngFor="let tsk of filteredTasks | taskfilter:taskFilter | slice:(page-1)*limit:page*limit; let idx  = index">
+						<button class="edit-task" (click)="openAddEditModal(tsk)"></button>
+						<button class="delete-task"  (click)="deleteTask(tsk,idx)"></button>
+						<div>Task name: <span>{{tsk.taskName}}</span></div>
+						<div>Task description: <span>{{tsk.taskDescription}}</span></div>
+						<div>Task duration: 
+							<span *ngIf="tsk.minutes">{{tsk.minutes}} Minutes And</span>
+							<span *ngIf="tsk.seconds">{{tsk.seconds}} Seconds</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="card-footer">
+				<div colspan="4">
+					<label class="table-info">Showing {{filteredTasks.length}} entries</label>
+					<span class="table-paging">
+						<label for="limit">Limit  </label><input type="number" name="limit" [(ngModel)]="limit" min="1" [attr.max]="[filteredTasks.length]" step="1" placeholder="Limit">
+						<label for="page">  -  Page </label><input type="number" name="page" [disabled]="limit >= filteredTasks.length" [(ngModel)]="page" min="1" [attr.max]="[filteredTasks.length]" step="1" placeholder="Page">
+					</span>
+					
+				</div>
+		</div>
+	</div>
+</div>   
+</div>
+
+<modal-content #childModal></modal-content>
