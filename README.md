@@ -1,18 +1,21 @@
 ## Tasks Time Tracker
 Never miss a thing in Life. Organize and keep track of all your tasks.
 
+ ### Demo: 
+	https://tasks-timer-tracker.herokuapp.com
+
 ## Screenshots
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-		* Angular 
-		* TypeScript
-		* Karma/Jasmine
-		* Codelyzer & TSLint
-		* SASS/SCSS
-		* Webpack 3
-		* Express
-		* MongoDB
+* Angular 
+* TypeScript
+* Karma/Jasmine
+* Codelyzer & TSLint
+* SASS/SCSS
+* Webpack 3
+* Express
+* MongoDB
 
 ## Features
 	- The ability to book time directly from the tracker.
