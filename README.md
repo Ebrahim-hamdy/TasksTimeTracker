@@ -2,7 +2,7 @@
 Never miss a thing in Life. Organize and keep track of all your tasks.
 
  ### Demo: 
-	https://tasks-timer-tracker.herokuapp.com
+	(https://tasks-timer-tracker.herokuapp.com)
 
 ## Screenshots
 Include logo/demo screenshot etc.
