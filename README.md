@@ -2,7 +2,7 @@
 Never miss a thing in Life. Organize and keep track of all your tasks.
 
  ### Demo: 
-[https://tasks-timer-tracker.herokuapp.com]
+https://tasks-timer-tracker.herokuapp.com
 
 ## Screenshots
 Include logo/demo screenshot etc.
@@ -31,7 +31,7 @@ Include logo/demo screenshot etc.
 	* `npm run server` - run a live-server instance off of the **dist/** directory (generated from the `build` command)
 
 ## API Reference
-	https://api-timer.herokuapp.com/tasks/
+https://api-timer.herokuapp.com/tasks/
 
 ## Tests
 	* `npm test` - run the project unit tests (*.spec.ts files)
